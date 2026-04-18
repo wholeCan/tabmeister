@@ -1,0 +1,14 @@
+services:
+  audiveris:
+    platform: linux/amd64
+    build:
+      context: .
+      network: host
+    container_name: audiveris-omr
+    volumes:
+      - ./input:/input
+      - ./output:/output
+    deploy:
+      resources:
+        limits:
+          memory: 4G
