@@ -1,14 +1,55 @@
 services:
-  audiveris:
-    platform: linux/amd64
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: tabmeister-rabbitmq
+    ports:
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  web:
     build:
       context: .
-      network: host
-    container_name: audiveris-omr
+      dockerfile: web/Dockerfile
+    container_name: tabmeister-web
+    ports:
+      - "5000:5000"
+    env_file: .env
     volumes:
-      - ./input:/input
+      - ./uploads:/uploads
+      - ./logs:/logs
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: production
+
+  worker:
+    build:
+      context: .
+      dockerfile: worker/Dockerfile
+    container_name: tabmeister-worker
+    env_file: .env
+    volumes:
+      - ./uploads:/uploads
       - ./output:/output
+      - ./logs:/logs
     deploy:
       resources:
         limits:
           memory: 4G
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+volumes:
+  rabbitmq_data:
