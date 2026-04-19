@@ -107,6 +107,27 @@
             font-size: 12px;
             color: #666;
         }
+        .beer-fund {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+        }
+        .beer-fund-text {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .beer-fund button {
+            width: auto;
+            display: inline-block;
+            padding: 10px 24px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            font-size: 14px;
+        }
+        .beer-fund button:hover {
+            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -144,6 +165,11 @@
         </form>
 
         <div id="message" class="message"></div>
+
+        <div class="beer-fund">
+            <p class="beer-fund-text">This service is free, but if you want to contribute to my beer fund:</p>
+            <button type="button" onclick="window.location.href='{{ venmo_link }}'">Buy Me a Beer 🍺</button>
+        </div>
     </div>
 
     <script>

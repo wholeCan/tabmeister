@@ -7,7 +7,10 @@ from pathlib import Path
 from functools import wraps
 
 import pika
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify
+
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev-key-change-me")
@@ -89,7 +92,8 @@ def validate_email(email):
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("index.html")
+    venmo_link = os.getenv("VENMO_LINK", "")
+    return render_template("index.html", venmo_link=venmo_link)
 
 
 @app.route("/upload", methods=["POST"])
