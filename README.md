@@ -4,7 +4,7 @@ Convert sheet music PDFs into machine-readable notation formats using Audiveris 
 
 ## The Story
 
-From time to time, I find myself needing to convert sheet music into guitar / bass tabs. There is an online service that does this, but it's notoriously unreliable. After several failed attempts to find a working service (and even trying to pay for one), I decided to build my own solution.
+From time to time, I find myself needing to convert sheet music into guitar / bass tabs. There is an online service that does this, but it's notoriously unreliable. After several failed attempts to find a working service (and even trying to pay for one and have it flake out), I decided to build my own solution.
 
 The result: a web-based system powered by [**Audiveris**](https://github.com/Audiveris/audiveris), an open-source Optical Music Recognition (OMR) engine. Upload your sheet music via the web form, and the converted MusicXML file is emailed to you when ready.
 
