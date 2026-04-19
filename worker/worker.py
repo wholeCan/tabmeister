@@ -175,7 +175,9 @@ def process_job(ch, method, properties, body):
                 f"Sheet Music Conversion Complete - {filename}",
                 f"Your sheet music file '{filename}' has been processed.\n\n"
                 f"Processing completed but no output files were generated. "
-                f"This may happen with certain types of sheet music.",
+                f"This may happen with certain types of sheet music.\n\n"
+                f"⚠️  Reminder: Tabmeister is an experimental tool. If you continue to have issues, "
+                f"try scanning a clearer copy of your sheet music or adjust the quality/resolution of the PDF.",
             )
         else:
             log_conversion(job_id, email, filename, "success", duration)
@@ -183,8 +185,10 @@ def process_job(ch, method, properties, body):
                 email,
                 f"Sheet Music Conversion Complete - {filename}",
                 f"Your sheet music file '{filename}' has been successfully converted!\n\n"
-                f"The MusicXML file is attached. You can now open it in MuseScore, "
-                f"Finale, Sibelius, or other notation software.",
+                f"The MusicXML file is attached. You can now open it in MuseScore (https://musescore.org/download), "
+                f"Finale, Sibelius, or other notation software.\n\n"
+                f"⚠️  IMPORTANT: This conversion is automatically generated, and the output quality depends on the quality of your input file. "
+                f"Please review the attached file and make any adjustments as needed in your notation software.",
                 attachments=output_files,
             )
 

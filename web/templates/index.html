@@ -128,12 +128,41 @@
         .beer-fund button:hover {
             box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
         }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-size: 13px;
+            color: #856404;
+            line-height: 1.6;
+        }
+        .disclaimer strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .disclaimer a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .disclaimer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🎵 Tabmeister</h1>
         <p class="subtitle">Convert sheet music PDFs to MusicXML format</p>
+
+        <div class="disclaimer">
+            <strong>⚠️ Experimental Service</strong>
+            This is an experimental tool that uses music recognition technology to convert sheet music to digital format. The quality of the output depends entirely on the quality of your input file.
+            <br><br>
+            After you receive the converted file, open it with <a href="https://musescore.org/download" target="_blank">MuseScore</a> (free) or your preferred notation software to review and adjust the results as needed.
+        </div>
 
         <form id="uploadForm">
             <div class="form-group">
