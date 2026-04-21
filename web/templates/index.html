@@ -128,27 +128,59 @@
         .beer-fund button:hover {
             box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
         }
-        .disclaimer {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 30px;
-            font-size: 13px;
-            color: #856404;
-            line-height: 1.6;
-        }
-        .disclaimer strong {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
         .disclaimer a {
             color: #0056b3;
             text-decoration: none;
         }
         .disclaimer a:hover {
             text-decoration: underline;
+        }
+        details {
+            margin-bottom: 30px;
+        }
+        summary {
+            cursor: pointer;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #856404;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+        }
+        summary:hover {
+            background: #ffe69c;
+        }
+        summary::before {
+            content: "▼";
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 12px;
+            min-width: 16px;
+        }
+        details[open] summary::before {
+            transform: rotate(-180deg);
+        }
+        details[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom: none;
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            padding: 15px;
+            font-size: 13px;
+            color: #856404;
+            line-height: 1.6;
+            margin: 0;
         }
     </style>
 </head>
@@ -157,12 +189,16 @@
         <h1>🎵 Tabmeister</h1>
         <p class="subtitle">Convert sheet music PDFs to MusicXML format</p>
 
-        <div class="disclaimer">
-            <strong>⚠️ Experimental Service</strong>
-            This is an experimental tool that uses music recognition technology to convert sheet music to digital format. The quality of the output depends entirely on the quality of your input file.
-            <br><br>
-            After you receive the converted file, open it with <a href="https://musescore.org/download" target="_blank">MuseScore</a> (free) or your preferred notation software to review and adjust the results as needed.
-        </div>
+        <details>
+            <summary>ℹ️ About This Service (Experimental)</summary>
+            <div class="disclaimer">
+                This is an experimental tool that uses music recognition technology to convert sheet music to digital format. The quality of the output depends entirely on the quality of your input file.
+                <br><br>
+                After you receive the converted file, open it with <a href="https://musescore.org/download" target="_blank">MuseScore</a> (free) or your preferred notation software to review and adjust the results as needed.
+                <br><br>
+                For my workflow, I usually need to adjust a few notes that are incorrect then change the staff to tab. For some good examples, see <a href="https://jazzcapacitor.com/" target = "_blank">Jazz Capacitor</a>.
+            </div>
+        </details>
 
         <form id="uploadForm">
             <div class="form-group">
