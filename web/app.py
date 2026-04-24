@@ -17,7 +17,7 @@ app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev-key-change-me")
 
 UPLOADS_DIR = Path("/uploads")
 LOGS_DIR = Path("/logs")
-MAX_FILE_SIZE = 300 * 1024  # 300KB
+MAX_FILE_SIZE = 1 * 1024 * 1024  # 1MB
 
 # Ensure directories exist
 UPLOADS_DIR.mkdir(exist_ok=True)

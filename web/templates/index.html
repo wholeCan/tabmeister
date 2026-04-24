@@ -213,7 +213,7 @@
             </div>
 
             <div class="form-group">
-                <label for="file">PDF File (Max 300KB)</label>
+                <label for="file">PDF File (Max 1MB)</label>
                 <input
                     type="file"
                     id="file"
@@ -222,7 +222,7 @@
                     required
                 >
                 <div class="file-info">
-                    Supported: PDF files up to 300KB
+                    Supported: PDF files up to 1MB
                 </div>
             </div>
 
@@ -281,9 +281,9 @@
         // Client-side file size validation
         document.getElementById("file").addEventListener("change", (e) => {
             const file = e.target.files[0];
-            const maxSize = 300 * 1024; // 300KB
+            const maxSize = 1 * 1024 * 1024; // 1MB
             if (file && file.size > maxSize) {
-                alert(`File is too large. Maximum size is 300KB. Your file is ${(file.size / 1024).toFixed(1)}KB.`);
+                alert(`File is too large. Maximum size is 1MB. Your file is ${(file.size / 1024).toFixed(1)}KB.`);
                 e.target.value = "";
             }
         });
